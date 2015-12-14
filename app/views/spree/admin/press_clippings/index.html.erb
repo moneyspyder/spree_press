@@ -1,0 +1,44 @@
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::PressClipping) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_clipping), new_object_url, { :class => "btn-success", :icon => 'add', :id => 'admin_new_press_clipping' } %>
+<% end if can?(:create, Spree::PressClipping) %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_products_sidebar">
+
+
+<%#= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>
+
+<% if @press_clippings.any? %>
+  <table class="table" id="listing_products">
+    <thead>
+      <tr data-hook="admin_products_index_headers">
+        <th >Snippet Name</th>
+        <th >Date</th>
+        <th data-hook="admin_products_index_header_actions" class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @press_clippings.each do |press_clipping| %>
+          <tr id="<%= spree_dom_id press_clipping %>" data-hook="admin_press_clippings_index_rows" class="<%= cycle('odd', 'even') %>">
+            <td class="name"><%= press_clipping.name  %></td>
+            <td class="published-on"><%= press_clipping.published_at.strftime("%d-%m-%Y") rescue '' %></td>
+            <td class="actions actions-3 text-right" data-hook="admin_products_index_row_actions">
+              <%= link_to_edit press_clipping, no_text: true, class: 'edit' if can?(:edit, press_clipping) %>
+              <%= link_to_delete press_clipping, no_text: true if can?(:delete, press_clipping) %>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::PressClipping)) %>,
+    <%= link_to Spree.t(:add_one), new_object_url %>!
+  </div>
+<% end %>
+
+<%#= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>

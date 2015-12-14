@@ -1,0 +1,5 @@
+<% if can? :admin, Spree::PressClipping %>
+  <ul class="nav nav-sidebar">
+    <%= tab Spree::PressClipping, url: spree.admin_press_clippings_url, icon: 'film', label: Spree.t(:press) %>
+  </ul>
+<% end %>

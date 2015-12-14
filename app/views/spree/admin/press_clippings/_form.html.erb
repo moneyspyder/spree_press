@@ -1,0 +1,28 @@
+<div data-hook="admin_product_form_fields">
+
+  <div class="row">
+
+    <div class="col-md-12" data-hook="admin_product_form_left">
+      <div data-hook="admin_product_form_name">
+        <%= f.field_container :name, class: ['form-group'] do %>
+          <%= f.label :name, raw(Spree.t(:name) + content_tag(:span, ' *', class: 'required')) %>
+          <%= f.text_field :name, class: 'form-control title' %>
+          <%= f.error_message_on :name %>
+        <% end %>
+      </div>
+
+      <div data-hook="admin_product_form_prublished_at">
+        <%= f.field_container :published_at, class: ['form-group'] do %>
+          <%= f.label :published_at, Spree.t(:published_date) %>
+          <%= f.error_message_on :published_at %>
+          <%= f.text_field :published_at, value: datepicker_field_value(@press_clipping.published_at), class: 'datepicker form-control' %>
+        <% end %>
+      </div>
+    </div>
+
+<!--     <div class="col-md-4" data-hook="admin_product_form_right">
+
+    </div> -->
+
+  </div>
+</div>

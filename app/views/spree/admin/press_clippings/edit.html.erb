@@ -1,0 +1,15 @@
+<% content_for :page_actions do %>
+  <% if can?(:create, Spree::PressClipping) %>
+    <%= button_link_to Spree.t(:new_press_clipping), new_object_url, { class: "btn-success", icon: 'add', id: 'admin_new_press_clipping' } %>
+  <% end %>
+<% end %>
+
+<%#= render partial: 'spree/admin/shared/product_tabs', locals: {current: :details} %>
+<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @press_clipping } %>
+
+<%= form_for [:admin, @press_clipping], method: :put, html: { multipart: true } do |f| %>
+  <fieldset>
+    <%= render partial: 'form', locals: { f: f } %>
+    <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+  </fieldset>
+<% end %>
