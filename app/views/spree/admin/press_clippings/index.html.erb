@@ -6,9 +6,6 @@
   <%= button_link_to Spree.t(:new_clipping), new_object_url, { :class => "btn-success", :icon => 'add', :id => 'admin_new_press_clipping' } %>
 <% end if can?(:create, Spree::PressClipping) %>
 
-<% content_for :table_filter do %>
-  <div data-hook="admin_products_sidebar">
-
 
 <%#= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>
 
@@ -16,7 +13,7 @@
   <table class="table" id="listing_products">
     <thead>
       <tr data-hook="admin_products_index_headers">
-        <th >Snippet Name</th>
+        <th >Clipping Name</th>
         <th >Date</th>
         <th data-hook="admin_products_index_header_actions" class="actions"></th>
       </tr>

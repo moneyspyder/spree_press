@@ -1,8 +1,4 @@
-<% content_for :page_actions do %>
-  <% if can?(:create, Spree::PressClipping) %>
-    <%= button_link_to Spree.t(:new_press_clipping), new_object_url, { class: "btn-success", icon: 'add', id: 'admin_new_press_clipping' } %>
-  <% end %>
-<% end %>
+<%= render partial: 'spree/admin/press_clippings/press_clipping_page_actions' %>
 
 <%#= render partial: 'spree/admin/shared/product_tabs', locals: {current: :details} %>
 <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @press_clipping } %>
