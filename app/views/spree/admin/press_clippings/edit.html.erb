@@ -1,6 +1,6 @@
 <%= render partial: 'spree/admin/press_clippings/press_clipping_page_actions' %>
 
-<%#= render partial: 'spree/admin/shared/product_tabs', locals: {current: :details} %>
+<%= render partial: 'spree/admin/shared/press_clipping_tabs', locals: {current: :details} %>
 <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @press_clipping } %>
 
 <%= form_for [:admin, @press_clipping], method: :put, html: { multipart: true } do |f| %>

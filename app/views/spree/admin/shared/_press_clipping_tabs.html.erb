@@ -1,0 +1,15 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:press_clippings), admin_press_clippings_path %> /
+  <%= @press_clipping.name %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <ul class="nav nav-pills nav-stacked" data-hook="admin_press_clipping_tabs">
+    <%= content_tag :li, class: ('active' if current == :details) do %>
+      <%= link_to_with_icon 'edit', Spree.t(:details), edit_admin_press_clipping_url(@press_clipping) %>
+    <% end if can?(:admin, Spree::PressClipping) %>
+    <%= content_tag :li, class: ('active' if current == :images) do %>
+      <%= link_to_with_icon 'picture', Spree.t(:images), spree.images_admin_press_clipping_url(@press_clipping) %>
+    <% end if can?(:admin, Spree::Image) %>
+  </ul>
+<% end %>
